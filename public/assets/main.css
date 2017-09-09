@@ -1,0 +1,100 @@
+/*
+	=============== NYT ARTICLE SCRAPER CSS ===============
+
+	- General
+	- Text
+	- Buttons
+	- Main
+
+*/
+
+/* =============== GENERAL =============== */
+* {
+	box-sizing: border-box;
+}
+
+div#main-div.container {
+	width:100%;
+	margin-left:0;
+	margin-right:0;
+	border-left:0;
+	border-right:0;
+	padding:0;
+}
+
+div.panel.panel-default {
+	border-color:#eec;
+}
+
+.panel-default .panel-heading {
+	background-color:#f0eace;
+	border-color:#eec;
+}
+
+div.well, .well {
+	background-color: #fff;
+	border:1px solid #eec;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+
+/* =============== TEXT =============== */
+
+h1, h2, h3, h4 {
+	font-family: 'IM Fell DW Pica SC', serif;
+}
+
+.panel-title {
+	font-size:30px;
+}
+
+label, .btn {
+	font-family: 'IM Fell Great Primer SC', serif;
+	font-size:17px;
+}
+
+p {
+	font-family:'Times New Roman', serif;
+	font-size:17;
+}
+
+a {
+	font-size:22px;
+	color:#3f3d34;
+}
+
+a:hover {
+	color:#fc2c1c;
+	text-decoration: none;
+}
+
+/* =============== BUTTONS =============== */
+
+.btn.btn-default {
+	margin:1%;
+	background-color: #fff;
+
+	border-width: 1px;
+	border-style: solid;
+	border-color: #f0eace;
+
+}
+
+.btn.btn-default:hover {
+	background-color:#f0eace;
+	border-color: #fff;
+}
+
+/* =============== MAIN =============== */
+
+.jumbotron {
+	width:100%;
+	height:auto;
+
+	position:relative;
+	left:0;
+	right:0;
+	top:0;
+
+	background-image:url("./nytimg.jpg");
+}

@@ -25,7 +25,7 @@ var Main = React.createClass({
 					{/* jumbotron */}
 					<div className="jumbotron">
 						<h1>New York Times Article Scraper</h1>
-						<h3>search for and save your favorite articles!</h3>
+						<p>search for and save your favorite articles!</p>
 
 						{/* link to search (and queries + results within search) */}
 						<Link to="/search">
