@@ -48,7 +48,7 @@ module.exports = {
 		// custom headers
 		var authKey = "734c8e1dc5fe4b7fb1d6ee0e056e4221";
 		var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${authKey}
-			&q=${topic}`;
+			&q=${searchTopic}`;
 		
 		if (searchSYear) {
 			// if there's a start year
