@@ -103,6 +103,10 @@ app.delete("/delete/:id", function(req,res){
 	});
 });
 
+app.get("/", function(req,res){
+	res.sendFile("./public/index.html");
+});
+
 // START LISTENER
 // =============================================================
 app.listen(PORT, function(){
