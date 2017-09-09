@@ -33,9 +33,10 @@ app.use("/public", express.static("./public"));
 // =============================================================
 
 // mongodb local connection
-mongoose.connect("mongodb://localhost/nytreact");
+// mongoose.connect("mongodb://localhost/nytreact");
 
 // heroku mongolab connection
+mongoose.connect("mongodb://heroku_qz67mp31:8ado3p8eddbdlrsanduimt8n5k@ds129344.mlab.com:29344/heroku_qz67mp31");
 
 var db = mongoose.connection;
 
