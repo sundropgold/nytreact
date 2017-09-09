@@ -70,13 +70,19 @@ app.get("/get-saved", function(req,res){
 });
 
 // POST - components will save an article to the database
-app.post("/save", function(req,res){
+app.post("/save", newdoc, function(req,res){
 
 	// save into object the new article to be added as a new Article
-	var newdoc = {};
-	newdoc.title = req.body.title;
-	newdoc.date = req.body.date;
-	newdoc.url = req.body.url;
+	// var newdoc = {};
+	// newdoc.title = req.body.title;
+	// newdoc.date = req.body.date;
+	// newdoc.url = req.body.url;
+
+	var newdoc = {
+		title:title,
+		date:date,
+		url:url
+	};
 
 	// create new Article
 	var newArticle = new Article(newdoc);

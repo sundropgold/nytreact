@@ -27,13 +27,12 @@ module.exports = {
 	saveArticle: function(article){
 
 		var article = {
-				title:article.headline.main,
-				url:article.web_url,
-				date:article.pub_date
-
+				title:headline.main,
+				date:pub_date,
+				url:web_url
 			};
 
-		return axios.post("/save");
+		return axios.post("/save/", article);
 	},
 	// delete saved article in the database
 	deleteSavedArticle:function(id){

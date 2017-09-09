@@ -49,7 +49,7 @@ var Search = React.createClass({
 		var index = event.target.value;
 
 		// save article to the database using helper function
-		helpers.saveArticle(this.state.articles[index]).then(function(){
+		helpers.saveArticle(this.state.articles[index]).then(function(response){
 			
 			var currentArticles = this.state.articles;
 
@@ -60,7 +60,7 @@ var Search = React.createClass({
 				articles: currentArticles
 			});
 
-		}).bind(this);
+		}.bind(this));
 	},
 
 	// lifecycle  event which runs whenever a new search has been done
@@ -79,7 +79,7 @@ var Search = React.createClass({
 					});
 				}
 
-			});
+			}.bind(this));
 
 		}
 
@@ -101,7 +101,7 @@ var Search = React.createClass({
 						/>
 
 						<Results
-							articles = {this.state.articles}
+							articles = {this.state.articles} 
 							newArticle = {this.newArticle}
 						/> 
 
