@@ -53,9 +53,13 @@ var Search = React.createClass({
 			
 			var currentArticles = this.state.articles;
 
+			// remove article from articles
+			currentArticles.splice(index,1);
+
 			this.setState({
 				articles: currentArticles
 			});
+
 		}).bind(this);
 	},
 
@@ -69,8 +73,10 @@ var Search = React.createClass({
 			helpers.searchNYT(this.state.topic, this.state.startYear, this.state.endYear).then(function(response){
 
 				// if the articles are new, set to new articles
-				if (this.state.articles !== response) {	
-					this.setState({articles:response});
+				if (response !== this.state.articles) {	
+					this.setState({
+						articles:response
+					});
 				}
 
 			});

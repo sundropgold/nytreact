@@ -62,12 +62,12 @@ module.exports = {
 
 
 		return axios.get(url).then(function(res){
-			
-			console.log(res);
 
 			var limit = 5;
 			var newArticles = [];
 			var newData = res.data.response.docs;
+
+			console.log(newData);
 
 			for (var i = 0; i < limit; i++) {
 
