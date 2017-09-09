@@ -23,17 +23,19 @@ module.exports = {
 			return response.data;
 		});
 	},
+
 	// save an article to the database
 	saveArticle: function(article){
 
 		var article = {
-				title:headline.main,
-				date:pub_date,
-				url:web_url
+				title:article.headline.main,
+				date:article.pub_date,
+				url:article.web_url
 			};
 
-		return axios.post("/save/", article);
+		return axios.post("/save", article);
 	},
+
 	// delete saved article in the database
 	deleteSavedArticle:function(id){
 		return axios.delete("/delete/" + id);
@@ -65,8 +67,6 @@ module.exports = {
 			var limit = 5;
 			var newArticles = [];
 			var newData = res.data.response.docs;
-
-			console.log(newData);
 
 			for (var i = 0; i < limit; i++) {
 

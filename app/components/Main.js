@@ -29,10 +29,13 @@ var Main = React.createClass({
 
 						{/* link to search (and queries + results within search) */}
 						<Link to="/search">
-							<button className="btn btn-default">Search</button>
+							<button className="btn btn-default">Article Search</button>
 						</Link>
 
-						
+						{/* link to saved */}
+						<Link to="/saved">
+							<button className="btn btn-default">Saved Articles</button>
+						</Link>	
 
 					</div>
 
@@ -50,8 +53,4 @@ var Main = React.createClass({
 
 // export the component
 module.exports = Main;
-
-// {/* link to saved */}
-// 						<Link to="/saved">
-// 							<button className="btn btn-default">Saved</button>
-// 						</Link>			
+		

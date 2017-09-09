@@ -51,14 +51,20 @@ var Search = React.createClass({
 		// save article to the database using helper function
 		helpers.saveArticle(this.state.articles[index]).then(function(response){
 			
-			var currentArticles = this.state.articles;
+			if (response.data.alreadySaved) {
+				alert('You\'ve already  saved the article!');
+			}
+			else {
+				var currentArticles = this.state.articles;
 
-			// remove article from articles
-			currentArticles.splice(index,1);
+				// remove article from articles
+				currentArticles.splice(index,1);
 
-			this.setState({
-				articles: currentArticles
-			});
+				this.setState({
+					articles: currentArticles
+				});
+			}
+			
 
 		}.bind(this));
 	},

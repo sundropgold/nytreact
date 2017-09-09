@@ -8,6 +8,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var path = require('path');
 
 // required model
 var Article = require("./models/Article.js");
@@ -62,7 +63,6 @@ app.get("/get-saved", function(req,res){
 			console.log(err);
 		}
 		else {
-
 			res.json(doc);
 		}
 	});
@@ -70,19 +70,13 @@ app.get("/get-saved", function(req,res){
 });
 
 // POST - components will save an article to the database
-app.post("/save", newdoc, function(req,res){
+app.post("/save", function(req,res){
 
 	// save into object the new article to be added as a new Article
-	// var newdoc = {};
-	// newdoc.title = req.body.title;
-	// newdoc.date = req.body.date;
-	// newdoc.url = req.body.url;
-
-	var newdoc = {
-		title:title,
-		date:date,
-		url:url
-	};
+	var newdoc = {};
+	newdoc.title = req.body.title;
+	newdoc.date = req.body.date;
+	newdoc.url = req.body.url;
 
 	// create new Article
 	var newArticle = new Article(newdoc);
@@ -91,6 +85,9 @@ app.post("/save", newdoc, function(req,res){
 	newArticle.save(function(err, doc){
 		if (err) {
 			console.log(err);
+			// handle articles that have already been saved
+			// articles that are saved in database must be unique
+			res.json({alreadySaved: true});
 		}
 		else {
 			res.json(doc);
@@ -105,12 +102,17 @@ app.delete("/delete/:id", function(req,res){
 
 	// delete the article by id
 	Article.findByIdAndRemove(deleteID).exec(function(err, doc){
-		res.json(doc);
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.json(doc);
+		}
 	});
 });
 
 app.get("/", function(req,res){
-	res.sendFile("./public/index.html");
+	res.sendFile(path.resolve(__dirname, "./public/index.html"));
 });
 
 // START LISTENER

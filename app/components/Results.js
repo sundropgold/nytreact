@@ -12,12 +12,6 @@ var React = require("react");
 
 var Results = React.createClass({
 
-	handleClick: function(){
-
-		this.props.newArticle(event.target.value);
-
-	},
-
 	render: function(){
 
 		return (
@@ -41,7 +35,7 @@ var Results = React.createClass({
 									<button
 										value = {i} 
 										className = "btn btn-default"
-										onClick = {this.handleClick}>
+										onClick = {this.props.newArticle}>
 										Save
 									</button>
 								</div>

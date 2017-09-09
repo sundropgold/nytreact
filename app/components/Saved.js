@@ -29,21 +29,24 @@ var Saved = React.createClass({
 		// use helper function to get Articles
 		helpers.getSavedArticles().then(function(response){
 
-			// save articles into state
-			this.setState({
-				articles:response
-			});
-		});
+			if (response !== this.state.articles){
+				this.setState({
+					articles:response
+				});				
+			}
+
+
+		}.bind(this));
 	},
 
 	// delete a saved article from the db
 	deleteArticle:function(event){
 
 		// get id to delete
-		var deleteThisArticle = event.target.value;
+		var deleteID = event.target.value;
 
 		// use helper function to delete Articles
-		helpers.deleteSavedArticle(deleteThisArticle).then(function(){
+		helpers.deleteSavedArticle(deleteID).then(function(response){
 
 			// re-render the articles minus the deleted article
 			helpers.getSavedArticles().then(function(response){
@@ -52,14 +55,16 @@ var Saved = React.createClass({
 				this.setState({
 					articles:response
 				});
-			});
-		});
+
+			}.bind(this));
+
+		}.bind(this));
 	},
 
 	// render
 	render:function(){
 
-		if (this.props.articles) {
+		if (!this.props.articles) {
 			return(
 				<div>
 
@@ -72,22 +77,23 @@ var Saved = React.createClass({
 
 							<div className="panel-body">
 								{
-									this.props.articles.map(function(saved, i){
+									this.state.articles.map(function(saved){
 
-										<div className="well" key={i}>
+										return (
+											<div className="well" key={saved._id}>
 
-											<h4><a href={saved.web_url} target="_blank">{saved.headline.main}</a></h4>
-											<p>Published: {saved.pub_date}</p>
+												<h4><a href={saved.url} target="_blank">{saved.title}</a></h4>
+												<p>Published: {saved.date}</p>
 
-											<button
-											value = {i} 
-											className = "btn btn-default"
-											onClick = {this.state.deleteArticle}>
-											Delete
-											</button>
-										</div>
-
-									})
+												<button
+												value = {saved._id} 
+												className = "btn btn-default"
+												onClick = {this.deleteArticle}>
+												Delete
+												</button>
+											</div>
+										);
+									}.bind(this))
 								}
 							</div>
 

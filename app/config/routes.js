@@ -28,7 +28,7 @@ var IndexRoute = router.IndexRoute;
 // reference the high-level components
 var Main = require("../components/Main");
 var Search = require("../components/Search");
-// var Saved = require("../components/Saved");
+var Saved = require("../components/Saved");
 
 // ROUTES
 // ==================
@@ -41,7 +41,8 @@ module.exports = (
 
 		<Route path="/" component={Main}>
 		
-			<Route path="search" component={Search}/>
+			<Route path="/search" component={Search}/>
+			<Route path="/saved" component={Saved}/>
 
 			{/* default route */}
 			<IndexRoute component={Search}/>
@@ -51,6 +52,4 @@ module.exports = (
 	</Router>
 
 );
-
-			//<Route path="saved" component={Saved}/>
 
